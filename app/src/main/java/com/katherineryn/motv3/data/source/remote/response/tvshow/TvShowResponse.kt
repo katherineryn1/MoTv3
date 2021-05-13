@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class TvShowResponse (
     @SerializedName("id")
-    val tvShowId: Int,
+    val id: Int,
 
     @SerializedName("first_air_date")
     val releaseDate: String,

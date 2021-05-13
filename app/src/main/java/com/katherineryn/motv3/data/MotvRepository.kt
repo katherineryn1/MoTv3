@@ -23,7 +23,7 @@ class MotvRepository private constructor(
 
     override fun getMovies(sort: String): LiveData<Resource<PagedList<MovieEntity>>> {
         return object : NetworkBoundResource<PagedList<MovieEntity>, List<MovieResponse>>(appExecutors) {
-            override fun loadFromDB(): LiveData<PagedList<MovieEntity>> {
+            override fun loadFromDb(): LiveData<PagedList<MovieEntity>> {
                 return LivePagedListBuilder(localDataSource.getAllMovies(sort), pagedListConfig()).build()
             }
 
@@ -36,7 +36,7 @@ class MotvRepository private constructor(
             override fun saveCallResult(data: List<MovieResponse>) {
                 val movieList = data.map {
                     MovieEntity(
-                        id = it.movieId,
+                        id = it.id,
                         genre = "",
                         overview = it.overview,
                         poster = it.poster,
@@ -54,7 +54,7 @@ class MotvRepository private constructor(
 
     override fun getMovieDetail(movieId: Int): LiveData<Resource<MovieEntity>> {
         return object : NetworkBoundResource<MovieEntity, MovieDetailResponse>(appExecutors) {
-            override fun loadFromDB(): LiveData<MovieEntity> = localDataSource.getMovieById(movieId)
+            override fun loadFromDb(): LiveData<MovieEntity> = localDataSource.getMovieById(movieId)
 
             override fun shouldFetch(data: MovieEntity?): Boolean =
                 data == null || data.genre == "" // with assumption if genre == "", tag line is "" too. so tag line is not checked
@@ -93,7 +93,7 @@ class MotvRepository private constructor(
 
     override fun getTvShows(sort: String): LiveData<Resource<PagedList<TvShowEntity>>> {
         return object : NetworkBoundResource<PagedList<TvShowEntity>, List<TvShowResponse>>(appExecutors) {
-            override fun loadFromDB(): LiveData<PagedList<TvShowEntity>> {
+            override fun loadFromDb(): LiveData<PagedList<TvShowEntity>> {
                 return LivePagedListBuilder(localDataSource.getAllTvShows(sort), pagedListConfig()).build()
             }
 
@@ -106,7 +106,7 @@ class MotvRepository private constructor(
             override fun saveCallResult(data: List<TvShowResponse>) {
                 val tvShowList = data.map {
                     TvShowEntity (
-                        id = it.tvShowId,
+                        id = it.id,
                         genre = "",
                         overview = it.overview,
                         poster = it.poster,
@@ -124,7 +124,7 @@ class MotvRepository private constructor(
 
     override fun getTvShowDetail(tvShowId: Int): LiveData<Resource<TvShowEntity>> {
         return object : NetworkBoundResource<TvShowEntity, TvShowDetailResponse>(appExecutors) {
-            override fun loadFromDB(): LiveData<TvShowEntity> = localDataSource.getTvShowById(tvShowId)
+            override fun loadFromDb(): LiveData<TvShowEntity> = localDataSource.getTvShowById(tvShowId)
 
             override fun shouldFetch(data: TvShowEntity?): Boolean =
                 data == null || data.genre == "" // with assumption if genre == "", tag line is "" too. so tag line is not checked

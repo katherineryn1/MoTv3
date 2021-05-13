@@ -3,4 +3,13 @@
     <string name="title_movie">Movie</string>
     <string name="title_tvshow">Tv Show</string>
     <string name="title_favorite">Favorite</string>
+    <string name="lbl_title">Title</string>
+    <string name="lbl_genre">Genre</string>
+    <string name="lbl_overview">Overview</string>
+    <string name="lbl_release">Released on</string>
+    <string name="lbl_rating">Rating</string>
+    <string name="tagline">"%1$s"</string>
+    <string name="menu_newest">Newest</string>
+    <string name="menu_oldest">Oldest</string>
+    <string name="menu_random">Random</string>
 </resources>

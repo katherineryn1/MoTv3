@@ -51,7 +51,7 @@ ext {
     roomRuntimeVersion = '2.3.0'
     roomVersion = '2.3.0'
 
-    pagingVersion = '2.1.2'
+    pagingVersion = '2.1.1'
 }
 
 task clean(type: Delete) {

@@ -11,7 +11,7 @@ object SortUtils {
     const val TVSHOW_TABLE = "tvshowentities"
 
     fun getSortedQuery(filter: String, tableName: String): SimpleSQLiteQuery {
-        val simpleQuery = StringBuilder().append("SELECT * FROM $tableName")
+        val simpleQuery = StringBuilder().append("SELECT * FROM $tableName ")
         when (filter) {
             NEWEST -> simpleQuery.append("ORDER BY id DESC")
             OLDEST -> simpleQuery.append("ORDER BY id ASC")

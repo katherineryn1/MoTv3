@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class MovieResponse (
     @SerializedName("id")
-    val movieId: Int,
+    val id: Int,
 
     @SerializedName("genre_ids")
     val genreIds: List<Int>,
