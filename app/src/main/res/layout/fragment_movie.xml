@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/items_motv"
-        android:paddingBottom="50dp"
+        android:paddingBottom="80dp"
         android:clipToPadding="false"/>
 
     <ProgressBar
