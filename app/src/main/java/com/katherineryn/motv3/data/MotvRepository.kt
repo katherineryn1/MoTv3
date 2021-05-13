@@ -160,7 +160,9 @@ class MotvRepository private constructor(
         LivePagedListBuilder(localDataSource.getFavTvShows(), pagedListConfig()).build()
 
     override fun setFavTvShow(tvShow: TvShowEntity, state: Boolean) {
-        TODO("Not yet implemented")
+        appExecutors.diskIO().execute {
+            localDataSource.setFavTvShow(tvShow, state)
+        }
     }
 
     private fun pagedListConfig(): PagedList.Config {
