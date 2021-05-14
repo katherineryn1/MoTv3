@@ -1,7 +1,6 @@
 package com.katherineryn.motv3.data.source.remote.response.movie
 
 import com.google.gson.annotations.SerializedName
-import com.katherineryn.motv3.data.source.local.entity.MovieEntity
 
 data class MovieListResponse (
     @SerializedName("page")

@@ -34,6 +34,17 @@
 
     <style name="TextLargeBold">
         <item name="android:textSize">18sp</item>
+        <item name="fontFamily">@font/raleway_medium</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextItalic">
+        <item name="android:textSize">12sp</item>
+        <item name="fontFamily">@font/raleway_bold_italic</item>
+    </style>
+
+    <style name="DetailLabel">
+        <item name="android:textSize">14sp</item>
         <item name="fontFamily">@font/raleway_bold</item>
     </style>
 </resources>

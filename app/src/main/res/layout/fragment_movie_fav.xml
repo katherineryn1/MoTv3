@@ -4,28 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.tvshow.TvShowFragment">
+    tools:context=".ui.favorite.movie.MovieFavFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_tvshow"
+        android:id="@+id/rv_fav_movie"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="4dp"
+        android:clipToPadding="false"
+        android:paddingBottom="80dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/items_motv"
-        android:paddingBottom="80dp"
-        android:clipToPadding="false"/>
+        tools:listitem="@layout/items_motv" />
 
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

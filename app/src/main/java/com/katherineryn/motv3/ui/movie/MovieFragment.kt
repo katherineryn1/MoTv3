@@ -106,9 +106,9 @@ class MovieFragment : Fragment(), MovieAdapter.OnItemClickCallback {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun showProgressBar(visibilityStatus: Boolean) {
+    private fun showProgressBar(state: Boolean) {
         // if progress bar visible, recyclerview invisible
-        fragmentMovieBinding.progressBar.isVisible = visibilityStatus
-        fragmentMovieBinding.rvMovie.isInvisible = visibilityStatus
+        fragmentMovieBinding.progressBar.isVisible = state
+        fragmentMovieBinding.rvMovie.isInvisible = state
     }
 }

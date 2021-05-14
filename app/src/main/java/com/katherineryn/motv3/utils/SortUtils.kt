@@ -1,7 +1,6 @@
 package com.katherineryn.motv3.utils
 
 import androidx.sqlite.db.SimpleSQLiteQuery
-import java.lang.StringBuilder
 
 object SortUtils {
     const val NEWEST = "Newest"

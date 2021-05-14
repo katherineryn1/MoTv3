@@ -1,7 +1,6 @@
 package com.katherineryn.motv3.data.source.remote.response.tvshow
 
 import com.google.gson.annotations.SerializedName
-import com.katherineryn.motv3.data.source.local.entity.TvShowEntity
 
 data class TvShowListResponse (
     @SerializedName("page")
