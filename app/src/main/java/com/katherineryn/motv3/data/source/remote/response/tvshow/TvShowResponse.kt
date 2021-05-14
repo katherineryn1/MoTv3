@@ -6,6 +6,9 @@ data class TvShowResponse (
     @SerializedName("id")
     val id: Int,
 
+    @SerializedName("genre_ids")
+    val genreIds: List<Int>,
+
     @SerializedName("first_air_date")
     val releaseDate: String,
 
