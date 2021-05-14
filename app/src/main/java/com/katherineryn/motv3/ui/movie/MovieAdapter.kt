@@ -21,7 +21,8 @@ class MovieAdapter : PagedListAdapter<MovieEntity, MovieAdapter.MovieViewHolder>
         this.onItemClickCallback = onItemClickCallback
     }
 
-    inner class MovieViewHolder(private val binding: ItemsMotvBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class MovieViewHolder(private val binding: ItemsMotvBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: MovieEntity) {
             with(binding) {
                 tvTitle.text = movie.title
@@ -50,9 +51,11 @@ class MovieAdapter : PagedListAdapter<MovieEntity, MovieAdapter.MovieViewHolder>
     private fun ImageView.loadImage(url: String?) {
         Glide.with(this.context)
             .load(url)
-            .apply(RequestOptions()
-                .placeholder(R.drawable.ic_loading)
-                .error(R.drawable.ic_error))
+            .apply(
+                RequestOptions()
+                    .placeholder(R.drawable.ic_loading)
+                    .error(R.drawable.ic_error)
+            )
             .into(this)
     }
 

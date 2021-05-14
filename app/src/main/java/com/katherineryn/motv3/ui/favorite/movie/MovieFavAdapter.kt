@@ -11,21 +11,23 @@ import com.bumptech.glide.request.RequestOptions
 import com.katherineryn.motv3.R
 import com.katherineryn.motv3.data.source.local.entity.MovieEntity
 import com.katherineryn.motv3.databinding.ItemsMotvBinding
-import com.katherineryn.motv3.network.NetworkConst
+import com.katherineryn.motv3.network.NetworkConst.IMAGE_URL
 
 class MovieFavAdapter : PagedListAdapter<MovieEntity, MovieFavAdapter.MovieViewHolder>(DIFF_CALLBACK) {
+
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }
 
-    inner class MovieViewHolder(private val binding: ItemsMotvBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class MovieViewHolder(private val binding: ItemsMotvBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: MovieEntity) {
             with(binding) {
                 tvTitle.text = movie.title
                 tvRating.text = movie.voteAverage.toString()
-                imagePoster.loadImage(NetworkConst.IMAGE_URL + movie.poster)
+                imagePoster.loadImage(IMAGE_URL + movie.poster)
 
                 itemView.setOnClickListener {
                     onItemClickCallback.onItemClicked(movie.id.toString())
@@ -33,8 +35,6 @@ class MovieFavAdapter : PagedListAdapter<MovieEntity, MovieFavAdapter.MovieViewH
             }
         }
     }
-
-    fun getSwipedData(swipedPosition: Int): MovieEntity? = getItem(swipedPosition)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieFavAdapter.MovieViewHolder {
         val itemsMovieBinding = ItemsMotvBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -53,10 +53,13 @@ class MovieFavAdapter : PagedListAdapter<MovieEntity, MovieFavAdapter.MovieViewH
             .load(url)
             .apply(
                 RequestOptions()
-                .placeholder(R.drawable.ic_loading)
-                .error(R.drawable.ic_error))
+                    .placeholder(R.drawable.ic_loading)
+                    .error(R.drawable.ic_error)
+            )
             .into(this)
     }
+
+    fun getSwipedData(swipedPosition: Int): MovieEntity? = getItem(swipedPosition)
 
     interface OnItemClickCallback {
         fun onItemClicked(id: String)

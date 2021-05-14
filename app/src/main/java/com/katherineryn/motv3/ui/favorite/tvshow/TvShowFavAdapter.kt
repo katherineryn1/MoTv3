@@ -1,4 +1,4 @@
-package com.katherineryn.motv3.ui.tvshow
+package com.katherineryn.motv3.ui.favorite.tvshow
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -13,7 +13,7 @@ import com.katherineryn.motv3.data.source.local.entity.TvShowEntity
 import com.katherineryn.motv3.databinding.ItemsMotvBinding
 import com.katherineryn.motv3.network.NetworkConst.IMAGE_URL
 
-class TvShowAdapter : PagedListAdapter<TvShowEntity, TvShowAdapter.TvShowViewHolder>(DIFF_CALLBACK) {
+class TvShowFavAdapter : PagedListAdapter<TvShowEntity, TvShowFavAdapter.TvShowFavViewHolder>(DIFF_CALLBACK) {
 
     private lateinit var onItemClickCallback: OnItemClickCallback
 
@@ -21,7 +21,7 @@ class TvShowAdapter : PagedListAdapter<TvShowEntity, TvShowAdapter.TvShowViewHol
         this.onItemClickCallback = onItemClickCallback
     }
 
-    inner class TvShowViewHolder(private val binding: ItemsMotvBinding) :
+    inner class TvShowFavViewHolder(private val binding: ItemsMotvBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(tvShow: TvShowEntity) {
             with(binding) {
@@ -36,12 +36,12 @@ class TvShowAdapter : PagedListAdapter<TvShowEntity, TvShowAdapter.TvShowViewHol
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TvShowViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TvShowFavAdapter.TvShowFavViewHolder {
         val itemsTvShowBinding = ItemsMotvBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return TvShowViewHolder(itemsTvShowBinding)
+        return TvShowFavViewHolder(itemsTvShowBinding)
     }
 
-    override fun onBindViewHolder(holder: TvShowViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: TvShowFavAdapter.TvShowFavViewHolder, position: Int) {
         val tvShow = getItem(position)
         if (tvShow != null) {
             holder.bind(tvShow)
@@ -58,6 +58,8 @@ class TvShowAdapter : PagedListAdapter<TvShowEntity, TvShowAdapter.TvShowViewHol
             )
             .into(this)
     }
+
+    fun getSwipedData(swipedPosition: Int): TvShowEntity? = getItem(swipedPosition)
 
     interface OnItemClickCallback {
         fun onItemClicked(id: String)

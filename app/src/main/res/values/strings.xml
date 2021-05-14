@@ -8,15 +8,12 @@
     <string name="lbl_overview">Overview</string>
     <string name="lbl_release">Released on</string>
     <string name="lbl_rating">Rating</string>
-    <string name="lbl_tagline">"Tagline"</string>
-    <string name="tagline">\"%1$s\"</string>
+    <string name="lbl_tagline">&quot;Tagline &quot;</string>
+    <string name="tagline">&quot; %1$s &quot;</string>
     <string name="menu_newest">Newest</string>
     <string name="menu_oldest">Oldest</string>
     <string name="menu_random">Random</string>
     <string name="add_fav">Add item to favorite</string>
     <string name="msg_undo">Cancel remove item?</string>
     <string name="msg_ok">OK</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="empty_list">Empty List</string>
 </resources>

@@ -7,6 +7,7 @@ import com.katherineryn.motv3.data.MotvRepository
 import com.katherineryn.motv3.di.Injection
 import com.katherineryn.motv3.ui.detail.DetailViewModel
 import com.katherineryn.motv3.ui.favorite.movie.MovieFavViewModel
+import com.katherineryn.motv3.ui.favorite.tvshow.TvShowFavViewModel
 import com.katherineryn.motv3.ui.movie.MovieViewModel
 import com.katherineryn.motv3.ui.tvshow.TvShowViewModel
 
@@ -24,12 +25,16 @@ class ViewModelFactory private constructor(private val motvRepository: MotvRepos
             modelClass.isAssignableFrom(MovieFavViewModel::class.java) -> {
                 MovieFavViewModel(motvRepository) as T
             }
+            modelClass.isAssignableFrom(TvShowFavViewModel::class.java) -> {
+                TvShowFavViewModel(motvRepository) as T
+            }
             modelClass.isAssignableFrom(DetailViewModel::class.java) -> {
                 DetailViewModel(motvRepository) as T
             }
             else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
         }
     }
+
     companion object {
         @Volatile
         private var instance: ViewModelFactory? = null

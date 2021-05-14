@@ -33,6 +33,7 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
         activityDetailBinding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(activityDetailBinding.root)
 
+        setActionBarTitle("")
         showProgressBar(true)
 
         val factory = ViewModelFactory.getInstance(this)
@@ -104,6 +105,7 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
             if (movie.tagline.isNullOrEmpty()) {
                 tvTagline.visibility = View.GONE
             } else {
+                tvTagline.visibility = View.VISIBLE
                 tvTagline.text = resources.getString(R.string.tagline, movie.tagline)
             }
 
@@ -114,7 +116,6 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
     private fun populateTvShowDetail(tvShow: TvShowEntity) {
         with (activityDetailBinding) {
             tvTitle.text = tvShow.name
-            tvTagline.text = resources.getString(R.string.tagline, tvShow.tagline)
             tvRating.text = tvShow.voteAverage.toString()
             tvRelease.text = viewModel.parseDate(tvShow.releaseDate!!)
             tvGenre.text = tvShow.genre
@@ -125,6 +126,7 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
             if (tvShow.tagline.isNullOrEmpty()) {
                 tvTagline.visibility = View.GONE
             } else {
+                tvTagline.visibility = View.VISIBLE
                 tvTagline.text = resources.getString(R.string.tagline, tvShow.tagline)
             }
 
