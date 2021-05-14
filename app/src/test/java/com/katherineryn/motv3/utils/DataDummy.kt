@@ -14,6 +14,8 @@ object DataDummy {
      * NOTE :
      * DATA DUMMY IS DIFFERENT WITH THE REAL MOVIE DATA
      *
+     * not in test utils package because used in instrumental testing and unit testing
+     *
      **/
 
     fun generateDummyMovies(): List<MovieEntity> {

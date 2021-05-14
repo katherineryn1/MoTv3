@@ -42,7 +42,7 @@ class TvShowFavViewModelTest {
     }
 
     @Test
-    fun getFavMovies() {
+    fun getFavTvShows() {
         val dummyTvShows = pagedList
         `when`(dummyTvShows.size).thenReturn(3)
         val tvShows = MutableLiveData<PagedList<TvShowEntity>>()
@@ -59,7 +59,7 @@ class TvShowFavViewModelTest {
     }
 
     @Test
-    fun setFavMovie() {
+    fun setFavTvShow() {
         viewModel.setFavTvShow(DataDummy.dummyDetailTvShow())
         verify(motvRepository).setFavTvShow(DataDummy.dummyDetailTvShow(), true)
         verifyNoMoreInteractions(motvRepository)

@@ -103,9 +103,8 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
             setFavState(movie.isFav)
 
             if (movie.tagline.isNullOrEmpty()) {
-                tvTagline.visibility = View.GONE
+                tvTagline.text = resources.getString(R.string.empty)
             } else {
-                tvTagline.visibility = View.VISIBLE
                 tvTagline.text = resources.getString(R.string.tagline, movie.tagline)
             }
 
@@ -124,9 +123,8 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
             setFavState(tvShow.isFav)
 
             if (tvShow.tagline.isNullOrEmpty()) {
-                tvTagline.visibility = View.GONE
+                tvTagline.text = resources.getString(R.string.empty)
             } else {
-                tvTagline.visibility = View.VISIBLE
                 tvTagline.text = resources.getString(R.string.tagline, tvShow.tagline)
             }
 

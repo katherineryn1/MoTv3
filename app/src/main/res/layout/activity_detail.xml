@@ -90,11 +90,12 @@
 
         <TextView
             android:id="@+id/tv_release"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="5dp"
             android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/image_poster"
             app:layout_constraintTop_toBottomOf="@id/lbl_release"
             tools:text="@string/lbl_release" />
@@ -113,11 +114,12 @@
 
         <TextView
             android:id="@+id/tv_genre"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="5dp"
             android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/image_poster"
             app:layout_constraintTop_toBottomOf="@id/lbl_genre"
             tools:text="@string/lbl_genre" />
