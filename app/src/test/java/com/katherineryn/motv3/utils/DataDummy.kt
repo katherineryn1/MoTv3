@@ -19,7 +19,7 @@ object DataDummy {
     fun generateDummyMovies(): List<MovieEntity> {
         return listOf(
             MovieEntity(
-                460465,
+                3,
                 "Genre 1, Genre 2, Genre 3",
                 "Washed-up MMA fighter Cole Young, unaware of his heritage, and hunted by Emperor Shang Tsung's best warrior, Sub-Zero, seeks out and trains with Earth's greatest champions as he prepares to stand against the enemies of Outworld in a high stakes battle for the universe.",
                 "/xGuOF1T3WmPsAcQEQJfnG7Ud9f8.jpg",
@@ -30,7 +30,7 @@ object DataDummy {
                 false
             ),
             MovieEntity(
-                399566,
+                2,
                 "Genre 1",
                 "Overview Godzilla vs. Kong example",
                 "/pgqgaUx1cJb5oZQQ5v0tNARCeBp.jpg",
@@ -41,7 +41,7 @@ object DataDummy {
                 false
             ),
             MovieEntity(
-                804435,
+                1,
                 "Genre 4, Genre 2, Genre 7",
                 "Overview Vanquish",
                 "/AoWY1gkcNzabh229Icboa1Ff0BM.jpg",
@@ -56,7 +56,7 @@ object DataDummy {
 
     fun dummyDetailMovie(): MovieEntity {
         return MovieEntity (
-            460465,
+            3,
             "Genre 1, Genre 2, Genre 3",
             "Washed-up MMA fighter Cole Young, unaware of his heritage, and hunted by Emperor Shang Tsung's best warrior, Sub-Zero, seeks out and trains with Earth's greatest champions as he prepares to stand against the enemies of Outworld in a high stakes battle for the universe.",
             "/xGuOF1T3WmPsAcQEQJfnG7Ud9f8.jpg",
@@ -71,7 +71,7 @@ object DataDummy {
     fun generateDummyTvShows(): List<TvShowEntity> {
         return listOf(
             TvShowEntity(
-                71712,
+                3,
                 "Genre 4",
                 "Overview The Good Doctor",
                 "/6tfT03sGp9k4c0J3dypjrI8TSAI.jpg",
@@ -82,7 +82,7 @@ object DataDummy {
                 false
             ),
             TvShowEntity(
-                60735,
+                2,
                 "Genre 5, Genre 2, Genre 7, Genre 10",
                 "Overview The Flash",
                 "/lJA2RCMfsWoskqlQhXPSLFQGXEJ.jpg",
@@ -93,7 +93,7 @@ object DataDummy {
                 false
             ),
             TvShowEntity(
-                1416,
+                1,
                 "Genre 1",
                 "Overview Grey's Anatomy",
                 "/clnyhPqj1SNgpAdeSS6a6fwE6Bo.jpg",
@@ -108,7 +108,7 @@ object DataDummy {
 
     fun dummyDetailTvShow(): TvShowEntity {
         return TvShowEntity(
-            71712,
+            3,
             "Genre 4",
             "Overview The Good Doctor",
             "/6tfT03sGp9k4c0J3dypjrI8TSAI.jpg",
@@ -129,7 +129,7 @@ object DataDummy {
     fun generateRemoteDummyMovies(): List<MovieResponse> {
         return listOf(
             MovieResponse(
-                460465,
+                3,
                 listOf(1, 2, 3),
                 "Washed-up MMA fighter Cole Young, unaware of his heritage, and hunted by Emperor Shang Tsung's best warrior, Sub-Zero, seeks out and trains with Earth's greatest champions as he prepares to stand against the enemies of Outworld in a high stakes battle for the universe.",
                 "/xGuOF1T3WmPsAcQEQJfnG7Ud9f8.jpg",
@@ -138,7 +138,7 @@ object DataDummy {
                 7.8
             ),
             MovieResponse(
-                399566,
+                2,
                 listOf(1),
                 "Overview Godzilla vs. Kong example",
                 "/pgqgaUx1cJb5oZQQ5v0tNARCeBp.jpg",
@@ -147,7 +147,7 @@ object DataDummy {
                 8.2,
             ),
             MovieResponse(
-                804435,
+                1,
                 listOf(4, 2, 7),
                 "Overview Vanquish",
                 "/AoWY1gkcNzabh229Icboa1Ff0BM.jpg",
@@ -174,7 +174,7 @@ object DataDummy {
                     "Genre 3"
                 )
             ),
-            460465,
+            3,
             "Washed-up MMA fighter Cole Young, unaware of his heritage, and hunted by Emperor Shang Tsung's best warrior, Sub-Zero, seeks out and trains with Earth's greatest champions as he prepares to stand against the enemies of Outworld in a high stakes battle for the universe.",
             "/xGuOF1T3WmPsAcQEQJfnG7Ud9f8.jpg",
             "2021-04-07",
@@ -187,7 +187,7 @@ object DataDummy {
     fun generateRemoteDummyTvShows(): List<TvShowResponse> {
         return listOf(
             TvShowResponse(
-                71712,
+                3,
                 listOf(4),
                 "2017-09-25",
                 "The Good Doctor",
@@ -196,7 +196,7 @@ object DataDummy {
                 8.6
             ),
             TvShowResponse(
-                60735,
+                2,
                 listOf(5, 2, 7, 10),
                 "2021-05-10",
                 "The Flash",
@@ -205,7 +205,7 @@ object DataDummy {
                 7.7
             ),
             TvShowResponse(
-                1416,
+                1,
                 listOf(1),
                 "2018-10-20",
                 "Grey's Anatomy",
@@ -225,7 +225,7 @@ object DataDummy {
                     "Genre 4"
                 )
             ),
-            71712,
+            3,
             "The Good Doctor",
             "A young surgeon with Savant syndrome is recruited into the surgical unit of a prestigious hospital. The question will arise: can a person who doesn't have the ability to relate to people actually save their lives",
             "/6tfT03sGp9k4c0J3dypjrI8TSAI.jpg",

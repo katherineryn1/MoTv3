@@ -15,16 +15,20 @@ import com.katherineryn.motv3.data.source.remote.response.tvshow.TvShowResponse
 import com.katherineryn.motv3.utils.AppExecutors
 import com.katherineryn.motv3.vo.Resource
 
-class MotvRepository private constructor(
+class FakeMotvRepository constructor(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource,
-    private val appExecutors: AppExecutors)
-    : MotvDataSource {
+    private val appExecutors: AppExecutors
+) : MotvDataSource {
 
     override fun getMovies(sort: String): LiveData<Resource<PagedList<MovieEntity>>> {
-        return object : NetworkBoundResource<PagedList<MovieEntity>, List<MovieResponse>>(appExecutors) {
+        return object :
+            NetworkBoundResource<PagedList<MovieEntity>, List<MovieResponse>>(appExecutors) {
             override fun loadFromDb(): LiveData<PagedList<MovieEntity>> {
-                return LivePagedListBuilder(localDataSource.getAllMovies(sort), pagedListConfig()).build()
+                return LivePagedListBuilder(
+                    localDataSource.getAllMovies(sort),
+                    pagedListConfig()
+                ).build()
             }
 
             override fun shouldFetch(data: PagedList<MovieEntity>?): Boolean =
@@ -65,10 +69,10 @@ class MotvRepository private constructor(
             override fun saveCallResult(data: MovieDetailResponse) {
                 val listGenres = ArrayList<String>()
                 for (i in data.genres!!.indices) {
-                    listGenres.add(data.genres[i].name!!)
+                    listGenres.add(data.genres!![i].name!!)
                 }
 
-                val movie = MovieEntity (
+                val movie = MovieEntity(
                     id = data.id,
                     genre = listGenres.joinToString(),
                     overview = data.overview,
@@ -87,13 +91,18 @@ class MotvRepository private constructor(
     override fun getFavMovies(): LiveData<PagedList<MovieEntity>> =
         LivePagedListBuilder(localDataSource.getFavMovies(), pagedListConfig()).build()
 
-    override fun setFavMovie(movie: MovieEntity, state: Boolean) =
-        appExecutors.diskIO().execute { localDataSource.setFavMovie(movie, state) }
+    override fun setFavMovie(movie: MovieEntity, state: Boolean) {
+        localDataSource.setFavMovie(movie, state)
+    }
 
     override fun getTvShows(sort: String): LiveData<Resource<PagedList<TvShowEntity>>> {
-        return object : NetworkBoundResource<PagedList<TvShowEntity>, List<TvShowResponse>>(appExecutors) {
+        return object :
+            NetworkBoundResource<PagedList<TvShowEntity>, List<TvShowResponse>>(appExecutors) {
             override fun loadFromDb(): LiveData<PagedList<TvShowEntity>> {
-                return LivePagedListBuilder(localDataSource.getAllTvShows(sort), pagedListConfig()).build()
+                return LivePagedListBuilder(
+                    localDataSource.getAllTvShows(sort),
+                    pagedListConfig()
+                ).build()
             }
 
             override fun shouldFetch(data: PagedList<TvShowEntity>?): Boolean =
@@ -104,7 +113,7 @@ class MotvRepository private constructor(
 
             override fun saveCallResult(data: List<TvShowResponse>) {
                 val tvShowList = data.map {
-                    TvShowEntity (
+                    TvShowEntity(
                         id = it.id,
                         genre = "",
                         overview = it.overview,
@@ -123,7 +132,8 @@ class MotvRepository private constructor(
 
     override fun getTvShowDetail(tvShowId: Int): LiveData<Resource<TvShowEntity>> {
         return object : NetworkBoundResource<TvShowEntity, TvShowDetailResponse>(appExecutors) {
-            override fun loadFromDb(): LiveData<TvShowEntity> = localDataSource.getTvShowById(tvShowId)
+            override fun loadFromDb(): LiveData<TvShowEntity> =
+                localDataSource.getTvShowById(tvShowId)
 
             override fun shouldFetch(data: TvShowEntity?): Boolean =
                 data == null || data.genre == "" // with assumption if genre == "", tag line is "" too. so tag line is not checked
@@ -134,7 +144,7 @@ class MotvRepository private constructor(
             override fun saveCallResult(data: TvShowDetailResponse) {
                 val listGenres = ArrayList<String>()
                 for (i in data.genres!!.indices) {
-                    listGenres.add(data.genres[i].name!!)
+                    listGenres.add(data.genres!![i].name!!)
                 }
 
                 val tvShow = TvShowEntity(
@@ -157,8 +167,9 @@ class MotvRepository private constructor(
     override fun getFavTvShows(): LiveData<PagedList<TvShowEntity>> =
         LivePagedListBuilder(localDataSource.getFavTvShows(), pagedListConfig()).build()
 
-    override fun setFavTvShow(tvShow: TvShowEntity, state: Boolean) =
-        appExecutors.diskIO().execute { localDataSource.setFavTvShow(tvShow, state) }
+    override fun setFavTvShow(tvShow: TvShowEntity, state: Boolean) {
+        localDataSource.setFavTvShow(tvShow, state)
+    }
 
     private fun pagedListConfig(): PagedList.Config {
         return PagedList.Config.Builder()
@@ -166,17 +177,5 @@ class MotvRepository private constructor(
             .setInitialLoadSizeHint(4)
             .setPageSize(4)
             .build()
-    }
-
-    companion object {
-        @Volatile
-        private var instance: MotvRepository? = null
-
-        fun getInstance(remoteData: RemoteDataSource, localData: LocalDataSource, appExecutors: AppExecutors): MotvRepository =
-            instance ?: synchronized(this) {
-                instance ?: MotvRepository(remoteData, localData, appExecutors).apply {
-                    instance = this
-                }
-            }
     }
 }
